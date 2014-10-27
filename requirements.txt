@@ -6,4 +6,7 @@
 ###################################################
 
 ## http request dependencies ##
-requests==2.3.0
+requests
+
+## concurrent python 2/3 support ##
+six
