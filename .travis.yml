@@ -7,6 +7,8 @@ python:
 install:
   - "pip install -r requirements.txt"
   # - "pip install -r optional-requirements.txt"
+  - if [ "${TRAVIS_PYTHON_VERSION:0:3}" == "2.6" ] then pip install ordereddict; fi
+  - if [ "${TRAVIS_PYTHON_VERSION:0:3}" == "2.6" ] then pip install simplejson; fi
   - "pip install coverage"
   - "pip install nose"
 script:
