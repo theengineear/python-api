@@ -9,7 +9,8 @@ install:
   - echo $TRAVIS_PYTHON_VERSION
   - chmod u+x core_dependency_installer.sh
   - source core_dependency_installer.sh $TRAVIS_PYTHON_VERSION
+  - pip install -r optional-requirements.txt
   - pip install coverage
   - pip install nose
 script:
-  - "nosetests -xv plotly/tests/test_core --with-coverage --cover-package=plotly"
+  - "nosetests -xv plotly/tests --with-coverage --cover-package=plotly"
