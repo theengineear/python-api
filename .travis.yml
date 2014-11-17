@@ -1,17 +1,15 @@
 language: python
 python:
-  # - "2.6"
+  - "2.6"
   - "2.7"
   - "3.3"
   - "3.4"
 install:
   - echo python version
   - echo $TRAVIS_PYTHON_VERSION
-  - "pip install -r requirements.txt"
-  # - "pip install -r optional-requirements.txt"
-  # - if [ "${TRAVIS_PYTHON_VERSION:0:3}" == "2.6" ] then pip install ordereddict; fi
-  # - if [ "${TRAVIS_PYTHON_VERSION:0:3}" == "2.6" ] then pip install simplejson; fi
-  - "pip install coverage"
-  - "pip install nose"
+  - chmod u+x core_dependency_installer.sh
+  - source core_dependency_installer.sh $TRAVIS_PYTHON_VERSION
+  - pip install coverage
+  - pip install nose
 script:
   - "nosetests -xv plotly/tests/test_core --with-coverage --cover-package=plotly"
