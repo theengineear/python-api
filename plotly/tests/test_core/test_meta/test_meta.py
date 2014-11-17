@@ -32,37 +32,37 @@ def _random_filename():
     return unique_filename
 
 
-@with_setup(init)
-def test_upload_meta():
-    unique_filename = _random_filename()
-    grid_url = py.grid_ops.upload(_grid, unique_filename, auto_open=False)
+# @with_setup(init)
+# def test_upload_meta():
+#     unique_filename = _random_filename()
+#     grid_url = py.grid_ops.upload(_grid, unique_filename, auto_open=False)
 
-    # Add some meta data to that grid
-    meta_url = py.meta_ops.upload(
-        _meta,
-        grid_url=grid_url)
-
-
-@with_setup(init)
-def test_upload_meta_with_grid():
-    c1 = Column([1, 2, 3, 4], 'first column')
-    grid = Grid([c1])
-
-    unique_filename = _random_filename()
-
-    py.grid_ops.upload(
-        _grid,
-        unique_filename,
-        meta=_meta,
-        auto_open=False)
+#     # Add some meta data to that grid
+#     meta_url = py.meta_ops.upload(
+#         _meta,
+#         grid_url=grid_url)
 
 
-@raises(PlotlyRequestError)
-def test_metadata_to_nonexistent_grid():
-    init()
+# @with_setup(init)
+# def test_upload_meta_with_grid():
+#     c1 = Column([1, 2, 3, 4], 'first column')
+#     grid = Grid([c1])
 
-    non_exist_meta_url = 'https://local.plot.ly/~GridTest/999999999'
+#     unique_filename = _random_filename()
 
-    meta_url = py.meta_ops.upload(
-        _meta,
-        grid_url=non_exist_meta_url)
+#     py.grid_ops.upload(
+#         _grid,
+#         unique_filename,
+#         meta=_meta,
+#         auto_open=False)
+
+
+# @raises(PlotlyRequestError)
+# def test_metadata_to_nonexistent_grid():
+#     init()
+
+#     non_exist_meta_url = 'https://local.plot.ly/~GridTest/999999999'
+
+#     meta_url = py.meta_ops.upload(
+#         _meta,
+#         grid_url=non_exist_meta_url)
